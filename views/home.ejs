@@ -1,0 +1,22 @@
+
+<%- include("partials/header"); -%>
+    <h1>Home</h1>
+    <p> <%= startingContent %> </p>
+
+
+  <%  posts.forEach(function(post){ %>
+
+    <h1><%=post.title%></h1>
+    <p>
+    <%=post.content.substring(0, 100) + " ..."%>
+    <%# Note here the Read more.. button is actually pasting _id %>
+    <%# So whenever u go via Read more u get taken to /posts/jcgkcbcvs34 like something %>
+    <%# What we do is first check that if req.params.postName is an _id by using findById() %>
+    <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
+
+
+    <% }) %>
+
+
+<%- include("partials/footer"); -%>
