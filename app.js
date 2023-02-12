@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // mongoose.connect("mongodb://localhost:27017/postsDB");
-mongoose.connect(mongodb+srv://dennis221:Jonas35@cluster0.bxpxrf7.mongodb.net/postsDB?retryWrites=true&w=majority);
+mongoose.connect("mongodb+srv://dennis221:Jonas35@cluster0.bxpxrf7.mongodb.net/postsDB?retryWrites=true&w=majority");
 
 // let posts = [];
 
