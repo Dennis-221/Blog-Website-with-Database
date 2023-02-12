@@ -30,16 +30,17 @@ let postSchema = new mongoose.Schema({
 const Post = mongoose.model("Post", postSchema);
 
 app.get("/", function(req, res){
+  res.sendStatus(200);
   Post.find(function(err, posts){
     if(err){
       console.log(err);
-      res.render("home", {
+      res.status(200).render("home", {
         startingContent: homeStartingContent,
         posts: []
         });
     }
     else{
-      res.render("home", {
+      res.status(200).render("home", {
         startingContent: homeStartingContent,
         posts: posts
         });
@@ -49,15 +50,15 @@ app.get("/", function(req, res){
 });
 
 app.get("/about", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+  res.status(200).render("about", {aboutContent: aboutContent});
 });
 
 app.get("/contact", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+  res.status(200).render("contact", {contactContent: contactContent});
 });
 
 app.get("/compose", function(req, res){
-  res.render("compose");
+  res.status(200).render("compose");
 });
 
 app.post("/compose", function(req, res){
@@ -94,7 +95,7 @@ app.get("/posts/:postName", function(req, res){
           const storedTitle = _.lowerCase(post.title);
 
           if (storedTitle === requestedTitle) {
-            res.render("post", {
+            res.status(200).render("post", {
               title: post.title,
               content: post.content
             });
@@ -103,7 +104,7 @@ app.get("/posts/:postName", function(req, res){
       })
     }else{
       //No error means findById() has found matching id or i.o.w we were directed here by the Read More.. button
-      res.render("post", {
+      res.status(200).render("post", {
         title: thepost.title,
         content: thepost.content
       });
